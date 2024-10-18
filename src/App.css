@@ -8,16 +8,31 @@
   background-color: rgb(169, 189, 250);
 }
 
+.calculator {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  width: 30vw;
+  height: 50vh;
+  background-color: rgb(200, 201, 241);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 20px;
+}
+
 .basic-button {
   background-color: #4a4cae;
   border: none;
   color: rgb(255, 255, 255);
-  padding: 15px 32px;
+  padding: 20px 32;
+  border-radius: 2px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  margin: 2px 2px;
   font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
-  width: 50px;
+  width: auto;
+  flex-grow: 1;
 }
