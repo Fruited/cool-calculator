@@ -9,7 +9,10 @@ function App() {
   function onNumberClick(value: string) {
     if (currentValue === "0") {
       setCurrentValue(value);
-    } else {
+    }else if(value === "." && currentValue.includes(".")){
+      return
+    }
+    else {
       setCurrentValue(currentValue + value);
     }
   }
@@ -35,6 +38,40 @@ function App() {
     } else {
       setCurrentValue(temp);
     }
+  }
+
+  function onEqualsClick() {
+    if (previousValue === "") {
+      return;
+    } else {
+      doCalculation();
+    }
+  }
+
+  function doCalculation() {
+    let result: number = 0;
+    switch (currentOperator) {
+      case "+": 
+        result = parseFloat(previousValue) + parseFloat(currentValue);
+        break;
+      case "-":
+        result = parseFloat(previousValue) - parseFloat(currentValue);
+        break;
+      case "*":
+        result = parseFloat(previousValue) * parseFloat(currentValue);
+        break;
+      case "/":
+        if (currentValue === "0") {
+          clear();
+          setCurrentValue("ERROR");
+          return;
+        }
+        result = parseFloat(previousValue) / parseFloat(currentValue);
+        break;
+    }
+    let strResult = result.toFixed(5);
+    setPreviousValue("");
+    setCurrentValue(strResult);
   }
 
   return (
@@ -106,7 +143,9 @@ function App() {
           <button className="basic-button" onClick={() => onNumberClick("00")}>
             00
           </button>
-          <button className="basic-button">=</button>
+          <button className="basic-button" onClick={() => onEqualsClick()}>
+            =
+          </button>
         </div>
       </div>
     </div>
