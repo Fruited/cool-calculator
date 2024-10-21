@@ -7,18 +7,28 @@ function App() {
   const [currentOperator, setCurrentOperator] = useState("");
 
   function onNumberClick(value: string) {
-    if (currentValue === "0") {
-      setCurrentValue(value);
-    } else if (value === "." && currentValue.includes(".")) {
-      return
+    if (value === "." && currentValue.includes(".")) {
+      return;
     }
-    else {
+    if (currentValue === "0" || currentValue === "") {
+      if (value === "00") {
+        return;
+      }
+      if (value === ".") {
+        setCurrentValue(currentValue + value);
+      } else {
+        setCurrentValue(value);
+      }
+    } else {
       setCurrentValue(currentValue + value);
     }
   }
 
   function onOperatorClick(operator: string) {
     setCurrentOperator(operator);
+    if (currentValue === "") {
+      return;
+    }
     setPreviousValue(currentValue);
     setCurrentValue("");
   }
@@ -82,7 +92,11 @@ function App() {
         </div>
         <div className="btn-collection">
           <div className="btn-row">
-            <button id='c-button' className="basic-button" onClick={() => clear()}>
+            <button
+              id="c-button"
+              className="basic-button"
+              onClick={() => clear()}
+            >
               c
             </button>
             <button className="basic-button" onClick={() => deleteLastChar()}>
@@ -91,7 +105,10 @@ function App() {
             <button className="basic-button" onClick={() => onNumberClick(".")}>
               .
             </button>
-            <button className="basic-button" onClick={() => onOperatorClick("/")}>
+            <button
+              className="basic-button"
+              onClick={() => onOperatorClick("/")}
+            >
               /
             </button>
           </div>
@@ -105,7 +122,10 @@ function App() {
             <button className="basic-button" onClick={() => onNumberClick("9")}>
               9
             </button>
-            <button className="basic-button" onClick={() => onOperatorClick("*")}>
+            <button
+              className="basic-button"
+              onClick={() => onOperatorClick("*")}
+            >
               *
             </button>
           </div>
@@ -119,7 +139,10 @@ function App() {
             <button className="basic-button" onClick={() => onNumberClick("6")}>
               6
             </button>
-            <button className="basic-button" onClick={() => onOperatorClick("-")}>
+            <button
+              className="basic-button"
+              onClick={() => onOperatorClick("-")}
+            >
               -
             </button>
           </div>
@@ -133,7 +156,10 @@ function App() {
             <button className="basic-button" onClick={() => onNumberClick("3")}>
               3
             </button>
-            <button className="basic-button" onClick={() => onOperatorClick("+")}>
+            <button
+              className="basic-button"
+              onClick={() => onOperatorClick("+")}
+            >
               +
             </button>
           </div>
@@ -141,7 +167,10 @@ function App() {
             <button className="basic-button" onClick={() => onNumberClick("0")}>
               0
             </button>
-            <button className="basic-button" onClick={() => onNumberClick("00")}>
+            <button
+              className="basic-button"
+              onClick={() => onNumberClick("00")}
+            >
               00
             </button>
             <button className="basic-button" onClick={() => onEqualsClick()}>
