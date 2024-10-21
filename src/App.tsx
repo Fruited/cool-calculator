@@ -9,7 +9,7 @@ function App() {
   function onNumberClick(value: string) {
     if (currentValue === "0") {
       setCurrentValue(value);
-    }else if(value === "." && currentValue.includes(".")){
+    } else if (value === "." && currentValue.includes(".")) {
       return
     }
     else {
@@ -51,7 +51,7 @@ function App() {
   function doCalculation() {
     let result: number = 0;
     switch (currentOperator) {
-      case "+": 
+      case "+":
         result = parseFloat(previousValue) + parseFloat(currentValue);
         break;
       case "-":
@@ -77,75 +77,77 @@ function App() {
   return (
     <div className="container">
       <div className="calculator">
-        <div>
-          <input type="text" value={currentValue} readOnly />
+        <div className="display">
+          <input className="input" type="text" value={currentValue} readOnly />
         </div>
-        <div>
-          <button className="basic-button" onClick={() => clear()}>
-            c
-          </button>
-          <button className="basic-button" onClick={() => deleteLastChar()}>
-            d
-          </button>
-          <button className="basic-button" onClick={() => onNumberClick(".")}>
-            .
-          </button>
-          <button className="basic-button" onClick={() => onOperatorClick("/")}>
-            /
-          </button>
-        </div>
-        <div>
-          <button className="basic-button" onClick={() => onNumberClick("7")}>
-            7
-          </button>
-          <button className="basic-button" onClick={() => onNumberClick("8")}>
-            8
-          </button>
-          <button className="basic-button" onClick={() => onNumberClick("9")}>
-            9
-          </button>
-          <button className="basic-button" onClick={() => onOperatorClick("*")}>
-            *
-          </button>
-        </div>
-        <div>
-          <button className="basic-button" onClick={() => onNumberClick("4")}>
-            4
-          </button>
-          <button className="basic-button" onClick={() => onNumberClick("5")}>
-            5
-          </button>
-          <button className="basic-button" onClick={() => onNumberClick("6")}>
-            6
-          </button>
-          <button className="basic-button" onClick={() => onOperatorClick("-")}>
-            -
-          </button>
-        </div>
-        <div>
-          <button className="basic-button" onClick={() => onNumberClick("1")}>
-            1
-          </button>
-          <button className="basic-button" onClick={() => onNumberClick("2")}>
-            2
-          </button>
-          <button className="basic-button" onClick={() => onNumberClick("3")}>
-            3
-          </button>
-          <button className="basic-button" onClick={() => onOperatorClick("+")}>
-            +
-          </button>
-        </div>
-        <div>
-          <button className="basic-button" onClick={() => onNumberClick("0")}>
-            0
-          </button>
-          <button className="basic-button" onClick={() => onNumberClick("00")}>
-            00
-          </button>
-          <button className="basic-button" onClick={() => onEqualsClick()}>
-            =
-          </button>
+        <div className="btn-collection">
+          <div className="btn-row">
+            <button id='c-button' className="basic-button" onClick={() => clear()}>
+              c
+            </button>
+            <button className="basic-button" onClick={() => deleteLastChar()}>
+              d
+            </button>
+            <button className="basic-button" onClick={() => onNumberClick(".")}>
+              .
+            </button>
+            <button className="basic-button" onClick={() => onOperatorClick("/")}>
+              /
+            </button>
+          </div>
+          <div className="btn-row">
+            <button className="basic-button" onClick={() => onNumberClick("7")}>
+              7
+            </button>
+            <button className="basic-button" onClick={() => onNumberClick("8")}>
+              8
+            </button>
+            <button className="basic-button" onClick={() => onNumberClick("9")}>
+              9
+            </button>
+            <button className="basic-button" onClick={() => onOperatorClick("*")}>
+              *
+            </button>
+          </div>
+          <div className="btn-row">
+            <button className="basic-button" onClick={() => onNumberClick("4")}>
+              4
+            </button>
+            <button className="basic-button" onClick={() => onNumberClick("5")}>
+              5
+            </button>
+            <button className="basic-button" onClick={() => onNumberClick("6")}>
+              6
+            </button>
+            <button className="basic-button" onClick={() => onOperatorClick("-")}>
+              -
+            </button>
+          </div>
+          <div className="btn-row">
+            <button className="basic-button" onClick={() => onNumberClick("1")}>
+              1
+            </button>
+            <button className="basic-button" onClick={() => onNumberClick("2")}>
+              2
+            </button>
+            <button className="basic-button" onClick={() => onNumberClick("3")}>
+              3
+            </button>
+            <button className="basic-button" onClick={() => onOperatorClick("+")}>
+              +
+            </button>
+          </div>
+          <div className="btn-row">
+            <button className="basic-button" onClick={() => onNumberClick("0")}>
+              0
+            </button>
+            <button className="basic-button" onClick={() => onNumberClick("00")}>
+              00
+            </button>
+            <button className="basic-button" onClick={() => onEqualsClick()}>
+              =
+            </button>
+          </div>
         </div>
       </div>
     </div>
