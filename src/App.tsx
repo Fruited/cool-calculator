@@ -78,6 +78,18 @@ function App() {
         }
         result = parseFloat(previousValue) / parseFloat(currentValue);
         break;
+      case "^":
+        result = parseFloat(previousValue) ^ parseFloat(currentValue);
+        break;
+      case "!":
+        const temp = parseFloat(currentValue);
+        if (!isNaN(temp) && Number.isInteger(temp) && temp >= 0) {
+          result = temp!;
+        } else {
+          setCurrentValue("ERROR");
+          return;
+        }
+        break;
     }
     let strResult = result.toFixed(5);
     setPreviousValue("");
